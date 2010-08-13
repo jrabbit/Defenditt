@@ -5,7 +5,8 @@ from pyjamas import Window
 
 def start(sender):
     Window.alert("Hello, GAMERS!")
-
+    hw = HTML("<img src='http://github.com/jrabbit/Defenditt/raw/master/media/instructions%20screen.png' alt='instructions'/>")
+    RootPanel().add(hw)
 if __name__ == '__main__':
     b = Button("Start Game", start)
     RootPanel().add(b)
