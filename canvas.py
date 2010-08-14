@@ -1,10 +1,36 @@
 from pyjamas.Canvas2D import Canvas, CanvasImage, ImageLoadListener
 from pyjamas.ui.RootPanel import RootPanel
+from pyjamas.ui.HTML import HTML
+from pyjamas.ui.Image import Image
+
 
 class OurCanvas(Canvas):
     def __init__(self):
         Canvas.__init__(self, 300, 250)
         self.img = CanvasImage('media/splash%20screen.png', self)
+        self.addMouseListener(self)
+    
+    def onMouseDown(self, sender, x, y):
+        if instuctions is not 1:
+             self.img = CanvasImage('media/instructions%20screen.png', self)
+             instructions = 1
+        else:
+            pass
+
+    def onMouseEnter(self, sender):
+        #RootPanel().add(HTML("mouseenter: setting focus (keyboard input accepted)"))      
+        self.setFocus(True)
+
+    def onMouseLeave(self, sender):
+        #RootPanel().add(HTML("mouseleave: clearing focus (keyboard input not accepted)"))      
+        self.setFocus(False)
+
+    def onMouseMove(self, sender, x, y):
+        #RootPanel().add(HTML("move: x %d " % x + "y %d" % y))
+        pass
+
+    def onMouseUp(self, sender, x, y):
+        pass
     
     def onLoad(self, sender=None):
         if sender==self.img:
@@ -20,29 +46,7 @@ class OurCanvas(Canvas):
     
 
 
-class RotatedCanvas(Canvas):
-    def __init__(self):
-        Canvas.__init__(self, 150, 150)
-        self.context.translate(75,75)
-        self.draw()
-
-    def draw(self):
-        pi = 3.14159265358979323
-        # Loop through rings (from inside to out)
-        for i in range(1,6):
-            self.context.save()
-            self.context.fillStyle = 'rgb(%d,%d,255)'%((51*i), (255-51*i))
-
-            # draw individual dots
-            for j in range(0,i*6): 
-                self.context.rotate(pi*2/(i*6))
-                self.context.beginPath()
-                self.context.arc(0,i*12.5,5,0,pi*2,True)
-                self.context.fill()
-
-            self.context.restore()
-
 if __name__ == '__main__':
     c = OurCanvas()
-    #h = HTML("<b>Space Game</b>", StyleName='teststyle')
     RootPanel().add(c)
+    c.getElement().focus()
