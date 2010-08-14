@@ -26,13 +26,17 @@ class OurCanvas(Canvas):
         self.addMouseListener(self)
     
     def onMouseDown(self, sender, x, y):
-        self.img = CanvasImage('media/instructions%20screen.png', self)
-        RootPanel().add(HTML("mouse down instuctions"))
-        RootPanel().add(HTML(self.screen))
-        if self.screen >= 2:
+        if self.screen == 1:
+            self.img = CanvasImage('media/instructions%20screen.png', self)
+            #RootPanel().add(HTML("mouse down instuctions"))
+            #RootPanel().add(HTML(self.screen))
+            
+        if self.screen == 2:
             self.img = CanvasImage('media/bkg.png', self)
+            #self.screen = self.screen + 1
             #RootPanel().add(HTML("mouse down bkg"))
         self.screen = self.screen + 1
+        
     
 
     def onMouseEnter(self, sender):
