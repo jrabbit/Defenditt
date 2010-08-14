@@ -19,8 +19,9 @@ def start(sender):
 
 def defenditt():
     #Characters
-    snoo = Image("./public/media/alien.png")
+    snoo = Image("./public/media/reddit alien.png")
     suit = Image("./public/media/suit.png")
+    bullet = Image("./public/media/bullet.png")
     pass
 
 if __name__ == '__main__':
