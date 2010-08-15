@@ -26,20 +26,23 @@ class OurCanvas(Canvas):
         self.addMouseListener(self)
     
     def onMouseDown(self, sender, x, y):
-        if self.screen == 1:
-            self.img = CanvasImage('media/instructions%20screen.png', self)
-            #RootPanel().add(HTML("mouse down instuctions"))
-            #RootPanel().add(HTML(self.screen))
-            
-        if self.screen == 2:
-            self.img = CanvasImage('media/bkg.png', self)
-            self.alien = CanvasImage('media/reddit alien.png')
-            self.loader = ImageLoadListener()
-            self.loader.add(self.alien)
-            self.context.drawImage(self.alien.getElement(), 0, Alien_ypos)
-            self.context.globalCompositeOperation('source-atop')
-            #self.screen = self.screen + 1
-            #RootPanel().add(HTML("mouse down bkg"))
+        images = ['instructions%20screen.png', 'titlecard.png' ]
+        self.img = CanvasImage("media/" + images[self.screen], self)
+        
+        # if self.screen == 1:
+        #             self.img = CanvasImage('media/instructions%20screen.png', self)
+        #             #RootPanel().add(HTML("mouse down instuctions"))
+        #             #RootPanel().add(HTML(self.screen))
+        #             
+        #         if self.screen == 2:
+        #             self.img = CanvasImage('media/bkg.png', self)
+        #             #self.context.globalCompositeOperation('source-over')
+        #             self.alien = CanvasImage('media/reddit alien.png', self)
+        #             #self.loader = ImageLoadListener()
+        #             #self.loader.add(self.alien)
+        #             self.context.drawImage(self.alien.getElement(), 0, Alien_ypos)
+        #             #self.screen = self.screen + 1
+        #             #RootPanel().add(HTML("mouse down bkg"))
         self.screen = self.screen + 1
         
     
